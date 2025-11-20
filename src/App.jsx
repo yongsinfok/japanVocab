@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Plus, Trash2, BookOpen, Sparkles, Search, X, Upload } from 'lucide-react';
+import { Plus, Trash2, BookOpen, Sparkles, Search, X, Upload, Library, Book, Layers } from 'lucide-react';
 import { read, utils } from 'xlsx';
 import './App.css';
 
@@ -9,16 +9,44 @@ function App() {
     const saved = localStorage.getItem('japanese-words');
     return saved ? JSON.parse(saved) : [];
   });
+
+  // Ensure all existing words have a collection
+  useEffect(() => {
+    const hasUndefinedCollection = words.some(w => !w.collection);
+    if (hasUndefinedCollection) {
+      const updatedWords = words.map(w => ({
+        ...w,
+        collection: w.collection || 'My Vocabulary'
+      }));
+      setWords(updatedWords);
+    }
+  }, []);
+
   const [isStudyMode, setIsStudyMode] = useState(false);
   const [showAddForm, setShowAddForm] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCollection, setSelectedCollection] = useState('All');
   const [selectedGroup, setSelectedGroup] = useState('All');
 
-  const groups = ['All', ...new Set(words.map(w => w.group || 'Uncategorized'))].sort();
+  // Get unique collections
+  const collections = ['All', ...new Set(words.map(w => w.collection || 'My Vocabulary'))].sort();
+
+  // Filter words by collection first to get available groups
+  const wordsInCollection = selectedCollection === 'All'
+    ? words
+    : words.filter(w => (w.collection || 'My Vocabulary') === selectedCollection);
+
+  // Get groups available in the current collection
+  const groups = ['All', ...new Set(wordsInCollection.map(w => w.group || 'Uncategorized'))].sort();
 
   useEffect(() => {
     localStorage.setItem('japanese-words', JSON.stringify(words));
   }, [words]);
+
+  // Reset group when collection changes
+  useEffect(() => {
+    setSelectedGroup('All');
+  }, [selectedCollection]);
 
   const addWord = (newWord) => {
     setWords([newWord, ...words]);
@@ -31,7 +59,7 @@ function App() {
     }
   };
 
-  const filteredWords = words.filter(w => {
+  const filteredWords = wordsInCollection.filter(w => {
     const matchesSearch =
       w.kanji.includes(searchTerm) ||
       w.furigana.includes(searchTerm) ||
@@ -54,25 +82,139 @@ function App() {
       if (file.name.endsWith('.json')) {
         const text = await file.text();
         const data = JSON.parse(text);
+        let newWords = [];
+        let collectionName = data.title || file.name.replace('.json', '');
+
+        // Format 1: Simple array format (original)
         if (Array.isArray(data)) {
-          const newWords = data.map(item => ({
+          newWords = data.map(item => ({
             id: Date.now() + Math.random(),
-            kanji: item.kanji || '',
-            furigana: item.furigana || '',
-            meaning: item.meaning || '',
-            example: item.example || '',
+            kanji: item.kanji || item.word || '',
+            furigana: item.furigana || item.reading || '',
+            meaning: item.meaning || item['中文'] || '',
+            example: item.example || item['例文'] || '',
             group: item.group || 'Imported',
+            collection: collectionName,
             dateAdded: new Date().toISOString()
           })).filter(w => w.kanji && w.meaning);
+        }
+        // Format 2: N3 Vocabulary format with categories
+        else if (data.categories && Array.isArray(data.categories)) {
+          const allWords = [];
+          data.categories.forEach(category => {
+            if (category.words && Array.isArray(category.words)) {
+              category.words.forEach(item => {
+                allWords.push({
+                  id: Date.now() + Math.random(),
+                  kanji: item.word || item.kanji || item['普通形'] || '',
+                  furigana: item.reading || item.furigana || '',
+                  meaning: item.meaning || item['中文'] || '',
+                  example: item.example || item['例文'] || '',
+                  group: category.category || data.title || 'Imported',
+                  collection: collectionName,
+                  dateAdded: new Date().toISOString()
+                });
+              });
+            }
+            // Handle keigo format with verbs
+            if (category.verbs && Array.isArray(category.verbs)) {
+              category.verbs.forEach(item => {
+                // For 尊敬語 (Keigo)
+                if (item['尊敬語']) {
+                  allWords.push({
+                    id: Date.now() + Math.random(),
+                    kanji: `${item['普通形']} → ${item['尊敬語']}`,
+                    furigana: item.reading_keigo || item.reading || '',
+                    meaning: `${item['中文']} (尊敬語)`,
+                    example: item['例文'] || '',
+                    group: category.category || '尊敬語',
+                    collection: collectionName,
+                    dateAdded: new Date().toISOString()
+                  });
+                }
+                // For 謙譲語 (Kenjougo)
+                if (item['謙譲語']) {
+                  allWords.push({
+                    id: Date.now() + Math.random(),
+                    kanji: `${item['普通形']} → ${item['謙譲語']}`,
+                    furigana: item.reading_kenjou || item.reading || '',
+                    meaning: `${item['中文']} (謙譲語)`,
+                    example: item['例文'] || '',
+                    group: category.category || '謙譲語',
+                    collection: collectionName,
+                    dateAdded: new Date().toISOString()
+                  });
+                }
+              });
+            }
+            // Handle business keigo situations
+            if (category.situations && Array.isArray(category.situations)) {
+              category.situations.forEach(situation => {
+                if (situation.phrases && Array.isArray(situation.phrases)) {
+                  situation.phrases.forEach(phrase => {
+                    allWords.push({
+                      id: Date.now() + Math.random(),
+                      kanji: phrase['日本語'] || '',
+                      furigana: phrase['用途'] || '',
+                      meaning: phrase['中文'] || '',
+                      example: `場面: ${situation.situation}`,
+                      group: category.category || 'ビジネス敬語',
+                      collection: collectionName,
+                      dateAdded: new Date().toISOString()
+                    });
+                  });
+                }
+              });
+            }
+            // Handle patterns
+            if (category.patterns && Array.isArray(category.patterns)) {
+              category.patterns.forEach(pattern => {
+                if (pattern['例'] && Array.isArray(pattern['例'])) {
+                  pattern['例'].forEach(example => {
+                    allWords.push({
+                      id: Date.now() + Math.random(),
+                      kanji: pattern.pattern || '',
+                      furigana: pattern['説明'] || '',
+                      meaning: example,
+                      example: '',
+                      group: category.category || 'パターン',
+                      collection: collectionName,
+                      dateAdded: new Date().toISOString()
+                    });
+                  });
+                }
+              });
+            }
+          });
+          newWords = allWords.filter(w => w.kanji && w.meaning);
+        }
+        // Format 3: Object with direct words array
+        else if (data.words && Array.isArray(data.words)) {
+          newWords = data.words.map(item => ({
+            id: Date.now() + Math.random(),
+            kanji: item.word || item.kanji || '',
+            furigana: item.reading || item.furigana || '',
+            meaning: item.meaning || '',
+            example: item.example || '',
+            group: data.title || 'Imported',
+            collection: collectionName,
+            dateAdded: new Date().toISOString()
+          })).filter(w => w.kanji && w.meaning);
+        }
 
+        if (newWords.length > 0) {
           setWords(prev => [...newWords, ...prev]);
-          alert(`${newWords.length} words imported successfully!`);
+          setSelectedCollection(collectionName); // Switch to new collection
+          alert(`✅ ${newWords.length} words imported to "${collectionName}"!`);
+        } else {
+          alert('⚠️ No valid words found in the file. Please check the format.');
         }
       } else if (file.name.endsWith('.xlsx') || file.name.endsWith('.xls')) {
         const data = await file.arrayBuffer();
         const workbook = read(data);
         const worksheet = workbook.Sheets[workbook.SheetNames[0]];
         const jsonData = utils.sheet_to_json(worksheet);
+        const collectionName = file.name.replace(/\.xlsx?$/, '');
 
         const newWords = jsonData.map(item => ({
           id: Date.now() + Math.random(),
@@ -81,10 +223,12 @@ function App() {
           meaning: item.meaning || item.Meaning || item['意味'] || '',
           example: item.example || item.Example || item['例文'] || '',
           group: item.group || item.Group || item['グループ'] || 'Imported',
+          collection: collectionName,
           dateAdded: new Date().toISOString()
         })).filter(w => w.kanji && w.meaning);
 
         setWords(prev => [...newWords, ...prev]);
+        setSelectedCollection(collectionName);
         alert(`${newWords.length} words imported successfully!`);
       }
     } catch (error) {
@@ -113,15 +257,17 @@ function App() {
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
+
           <select
             className="group-select"
             value={selectedGroup}
             onChange={(e) => setSelectedGroup(e.target.value)}
           >
             {groups.map(g => (
-              <option key={g} value={g}>{g}</option>
+              <option key={g} value={g}>{g === 'All' ? 'All Groups' : g}</option>
             ))}
           </select>
+
           <input
             type="file"
             ref={fileInputRef}
@@ -146,34 +292,67 @@ function App() {
         </div>
       </header>
 
-      <main className="main-content">
-        {words.length === 0 && !showAddForm ? (
-          <div className="empty-state">
-            <div className="empty-icon">🌸</div>
-            <h2>単語を追加しましょう</h2>
-            <p>Start your journey by adding your first Japanese word.</p>
-            <button className="add-btn-large" onClick={() => setShowAddForm(true)}>
-              Add First Word
-            </button>
+      <div className="app-body">
+        <aside className="sidebar">
+          <div className="sidebar-title">Collections (词库)</div>
+          <div className="collection-list">
+            {collections.map(c => {
+              const count = c === 'All'
+                ? words.length
+                : words.filter(w => (w.collection || 'My Vocabulary') === c).length;
+
+              return (
+                <button
+                  key={c}
+                  className={`collection-item ${selectedCollection === c ? 'active' : ''}`}
+                  onClick={() => setSelectedCollection(c)}
+                >
+                  <div className="collection-icon">
+                    {c === 'All' ? <Layers size={18} /> : <Book size={18} />}
+                  </div>
+                  <span>{c}</span>
+                  <span className="collection-count">{count}</span>
+                </button>
+              );
+            })}
           </div>
-        ) : (
-          <div className="word-grid">
-            {filteredWords.map(word => (
-              <WordCard
-                key={word.id}
-                word={word}
-                isStudyMode={isStudyMode}
-                onDelete={deleteWord}
-              />
-            ))}
-          </div>
-        )}
-      </main>
+        </aside>
+
+        <main className="main-content">
+          {words.length === 0 && !showAddForm ? (
+            <div className="empty-state">
+              <div className="empty-icon">🌸</div>
+              <h2>単語を追加しましょう</h2>
+              <p>Start your journey by adding your first Japanese word.</p>
+              <button className="add-btn-large" onClick={() => setShowAddForm(true)}>
+                Add First Word
+              </button>
+            </div>
+          ) : (
+            <div className="word-grid">
+              {filteredWords.map(word => (
+                <WordCard
+                  key={word.id}
+                  word={word}
+                  isStudyMode={isStudyMode}
+                  onDelete={deleteWord}
+                />
+              ))}
+              {filteredWords.length === 0 && (
+                <div className="no-results">
+                  <p>No words found in this collection/group.</p>
+                </div>
+              )}
+            </div>
+          )}
+        </main>
+      </div>
 
       {showAddForm && (
         <AddWordModal
           onClose={() => setShowAddForm(false)}
           onAdd={addWord}
+          currentCollection={selectedCollection === 'All' ? 'My Vocabulary' : selectedCollection}
         />
       )}
     </div>
@@ -213,7 +392,12 @@ function WordCard({ word, isStudyMode, onDelete }) {
               <p className="example">{word.example}</p>
             </div>
           )}
-          {word.group && <span className="group-tag">{word.group}</span>}
+          <div className="tags">
+            {word.group && <span className="group-tag">{word.group}</span>}
+            {word.collection && word.collection !== 'My Vocabulary' && (
+              <span className="collection-tag">{word.collection}</span>
+            )}
+          </div>
         </div>
 
         {!isRevealed && isStudyMode && (
@@ -236,13 +420,14 @@ function WordCard({ word, isStudyMode, onDelete }) {
   );
 }
 
-function AddWordModal({ onClose, onAdd }) {
+function AddWordModal({ onClose, onAdd, currentCollection }) {
   const [formData, setFormData] = useState({
     kanji: '',
     furigana: '',
     meaning: '',
     example: '',
-    group: ''
+    group: '',
+    collection: currentCollection
   });
 
   const handleSubmit = (e) => {
@@ -303,21 +488,31 @@ function AddWordModal({ onClose, onAdd }) {
               rows={3}
             />
           </div>
-          <div className="form-group">
-            <label>グループ (Group)</label>
-            <input
-              type="text"
-              placeholder="e.g. Week 1"
-              value={formData.group}
-              onChange={e => setFormData({ ...formData, group: e.target.value })}
-              list="group-suggestions"
-            />
-            <datalist id="group-suggestions">
-              <option value="Week 1" />
-              <option value="Week 2" />
-              <option value="Verbs" />
-              <option value="Nouns" />
-            </datalist>
+          <div className="form-row">
+            <div className="form-group">
+              <label>グループ (Group)</label>
+              <input
+                type="text"
+                placeholder="e.g. Week 1"
+                value={formData.group}
+                onChange={e => setFormData({ ...formData, group: e.target.value })}
+                list="group-suggestions"
+              />
+              <datalist id="group-suggestions">
+                <option value="Week 1" />
+                <option value="Week 2" />
+                <option value="Verbs" />
+                <option value="Nouns" />
+              </datalist>
+            </div>
+            <div className="form-group">
+              <label>词库 (Collection)</label>
+              <input
+                type="text"
+                value={formData.collection}
+                onChange={e => setFormData({ ...formData, collection: e.target.value })}
+              />
+            </div>
           </div>
           <div className="modal-actions">
             <button type="button" className="cancel-btn" onClick={onClose}>キャンセル</button>

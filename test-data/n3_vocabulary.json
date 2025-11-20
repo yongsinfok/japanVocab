@@ -1,0 +1,664 @@
+{
+    "title": "日本語能力試験 N3 単語リスト",
+    "description": "JLPT N3考试必备单词表",
+    "level": "N3",
+    "totalWords": 150,
+    "categories": [
+        {
+            "category": "動詞 (动词)",
+            "words": [
+                {
+                    "word": "集まる",
+                    "reading": "あつまる",
+                    "meaning": "聚集",
+                    "example": "みんなが公園に集まった。"
+                },
+                {
+                    "word": "預ける",
+                    "reading": "あずける",
+                    "meaning": "寄存、托付",
+                    "example": "銀行にお金を預ける。"
+                },
+                {
+                    "word": "謝る",
+                    "reading": "あやまる",
+                    "meaning": "道歉",
+                    "example": "遅れたことを謝った。"
+                },
+                {
+                    "word": "争う",
+                    "reading": "あらそう",
+                    "meaning": "争论、竞争",
+                    "example": "優勝を争う。"
+                },
+                {
+                    "word": "現れる",
+                    "reading": "あらわれる",
+                    "meaning": "出现",
+                    "example": "突然、彼が現れた。"
+                },
+                {
+                    "word": "表す",
+                    "reading": "あらわす",
+                    "meaning": "表示、表现",
+                    "example": "感謝の気持ちを表す。"
+                },
+                {
+                    "word": "改める",
+                    "reading": "あらためる",
+                    "meaning": "改正、重新",
+                    "example": "計画を改める。"
+                },
+                {
+                    "word": "扱う",
+                    "reading": "あつかう",
+                    "meaning": "处理、对待",
+                    "example": "機械を扱う。"
+                },
+                {
+                    "word": "浴びる",
+                    "reading": "あびる",
+                    "meaning": "浴、淋",
+                    "example": "シャワーを浴びる。"
+                },
+                {
+                    "word": "余る",
+                    "reading": "あまる",
+                    "meaning": "剩余",
+                    "example": "料理が余った。"
+                },
+                {
+                    "word": "編む",
+                    "reading": "あむ",
+                    "meaning": "编织",
+                    "example": "セーターを編む。"
+                },
+                {
+                    "word": "誤る",
+                    "reading": "あやまる",
+                    "meaning": "弄错",
+                    "example": "計算を誤る。"
+                },
+                {
+                    "word": "争う",
+                    "reading": "あらそう",
+                    "meaning": "争夺",
+                    "example": "一位を争う。"
+                },
+                {
+                    "word": "生まれる",
+                    "reading": "うまれる",
+                    "meaning": "出生",
+                    "example": "東京で生まれた。"
+                },
+                {
+                    "word": "埋める",
+                    "reading": "うめる",
+                    "meaning": "填埋",
+                    "example": "穴を埋める。"
+                },
+                {
+                    "word": "裏切る",
+                    "reading": "うらぎる",
+                    "meaning": "背叛",
+                    "example": "友達を裏切る。"
+                },
+                {
+                    "word": "恨む",
+                    "reading": "うらむ",
+                    "meaning": "怨恨",
+                    "example": "人を恨む。"
+                },
+                {
+                    "word": "選ぶ",
+                    "reading": "えらぶ",
+                    "meaning": "选择",
+                    "example": "好きな色を選ぶ。"
+                },
+                {
+                    "word": "追い出す",
+                    "reading": "おいだす",
+                    "meaning": "赶出",
+                    "example": "部屋から追い出す。"
+                },
+                {
+                    "word": "追い越す",
+                    "reading": "おいこす",
+                    "meaning": "超过",
+                    "example": "車を追い越す。"
+                }
+            ]
+        },
+        {
+            "category": "名詞 (名词)",
+            "words": [
+                {
+                    "word": "愛情",
+                    "reading": "あいじょう",
+                    "meaning": "爱情",
+                    "example": "親の愛情を感じる。"
+                },
+                {
+                    "word": "合図",
+                    "reading": "あいず",
+                    "meaning": "信号、暗号",
+                    "example": "合図を送る。"
+                },
+                {
+                    "word": "相手",
+                    "reading": "あいて",
+                    "meaning": "对方、对手",
+                    "example": "話し相手がいない。"
+                },
+                {
+                    "word": "空き",
+                    "reading": "あき",
+                    "meaning": "空位、空闲",
+                    "example": "席の空きがある。"
+                },
+                {
+                    "word": "憧れ",
+                    "reading": "あこがれ",
+                    "meaning": "憧憬、向往",
+                    "example": "海外生活への憧れ。"
+                },
+                {
+                    "word": "味",
+                    "reading": "あじ",
+                    "meaning": "味道",
+                    "example": "この料理は味がいい。"
+                },
+                {
+                    "word": "汗",
+                    "reading": "あせ",
+                    "meaning": "汗",
+                    "example": "汗をかく。"
+                },
+                {
+                    "word": "跡",
+                    "reading": "あと",
+                    "meaning": "痕迹",
+                    "example": "足跡が残っている。"
+                },
+                {
+                    "word": "穴",
+                    "reading": "あな",
+                    "meaning": "洞、孔",
+                    "example": "壁に穴を開ける。"
+                },
+                {
+                    "word": "油",
+                    "reading": "あぶら",
+                    "meaning": "油",
+                    "example": "油で揚げる。"
+                },
+                {
+                    "word": "誤り",
+                    "reading": "あやまり",
+                    "meaning": "错误",
+                    "example": "誤りを認める。"
+                },
+                {
+                    "word": "争い",
+                    "reading": "あらそい",
+                    "meaning": "争执",
+                    "example": "争いを避ける。"
+                },
+                {
+                    "word": "嵐",
+                    "reading": "あらし",
+                    "meaning": "暴风雨",
+                    "example": "嵐が来る。"
+                },
+                {
+                    "word": "アルバイト",
+                    "reading": "アルバイト",
+                    "meaning": "打工",
+                    "example": "アルバイトを探す。"
+                },
+                {
+                    "word": "安全",
+                    "reading": "あんぜん",
+                    "meaning": "安全",
+                    "example": "安全を確認する。"
+                },
+                {
+                    "word": "案内",
+                    "reading": "あんない",
+                    "meaning": "向导、指南",
+                    "example": "案内をお願いする。"
+                },
+                {
+                    "word": "意見",
+                    "reading": "いけん",
+                    "meaning": "意见",
+                    "example": "意見を述べる。"
+                },
+                {
+                    "word": "意志",
+                    "reading": "いし",
+                    "meaning": "意志",
+                    "example": "強い意志を持つ。"
+                },
+                {
+                    "word": "意識",
+                    "reading": "いしき",
+                    "meaning": "意识",
+                    "example": "意識がある。"
+                },
+                {
+                    "word": "遺産",
+                    "reading": "いさん",
+                    "meaning": "遗产",
+                    "example": "文化遺産を守る。"
+                }
+            ]
+        },
+        {
+            "category": "形容詞 (形容词)",
+            "words": [
+                {
+                    "word": "危ない",
+                    "reading": "あぶない",
+                    "meaning": "危险的",
+                    "example": "ここは危ない。"
+                },
+                {
+                    "word": "甘い",
+                    "reading": "あまい",
+                    "meaning": "甜的",
+                    "example": "このケーキは甘い。"
+                },
+                {
+                    "word": "荒い",
+                    "reading": "あらい",
+                    "meaning": "粗糙的、粗暴的",
+                    "example": "波が荒い。"
+                },
+                {
+                    "word": "新しい",
+                    "reading": "あたらしい",
+                    "meaning": "新的",
+                    "example": "新しい服を買う。"
+                },
+                {
+                    "word": "厚い",
+                    "reading": "あつい",
+                    "meaning": "厚的",
+                    "example": "厚い本。"
+                },
+                {
+                    "word": "薄い",
+                    "reading": "うすい",
+                    "meaning": "薄的",
+                    "example": "薄い紙。"
+                },
+                {
+                    "word": "美しい",
+                    "reading": "うつくしい",
+                    "meaning": "美丽的",
+                    "example": "美しい景色。"
+                },
+                {
+                    "word": "羨ましい",
+                    "reading": "うらやましい",
+                    "meaning": "羡慕的",
+                    "example": "羨ましい話だ。"
+                },
+                {
+                    "word": "嬉しい",
+                    "reading": "うれしい",
+                    "meaning": "高兴的",
+                    "example": "とても嬉しい。"
+                },
+                {
+                    "word": "多い",
+                    "reading": "おおい",
+                    "meaning": "多的",
+                    "example": "人が多い。"
+                },
+                {
+                    "word": "大きい",
+                    "reading": "おおきい",
+                    "meaning": "大的",
+                    "example": "大きい家。"
+                },
+                {
+                    "word": "幼い",
+                    "reading": "おさない",
+                    "meaning": "幼小的",
+                    "example": "幼い子供。"
+                },
+                {
+                    "word": "遅い",
+                    "reading": "おそい",
+                    "meaning": "慢的、晚的",
+                    "example": "時間が遅い。"
+                },
+                {
+                    "word": "恐ろしい",
+                    "reading": "おそろしい",
+                    "meaning": "可怕的",
+                    "example": "恐ろしい夢。"
+                },
+                {
+                    "word": "穏やか",
+                    "reading": "おだやか",
+                    "meaning": "平静的",
+                    "example": "穏やかな性格。"
+                }
+            ]
+        },
+        {
+            "category": "副詞 (副词)",
+            "words": [
+                {
+                    "word": "あいにく",
+                    "reading": "あいにく",
+                    "meaning": "不凑巧",
+                    "example": "あいにく留守です。"
+                },
+                {
+                    "word": "相変わらず",
+                    "reading": "あいかわらず",
+                    "meaning": "依然、照旧",
+                    "example": "相変わらず元気だ。"
+                },
+                {
+                    "word": "案外",
+                    "reading": "あんがい",
+                    "meaning": "意外地",
+                    "example": "案外簡単だった。"
+                },
+                {
+                    "word": "いかにも",
+                    "reading": "いかにも",
+                    "meaning": "确实、的确",
+                    "example": "いかにもそうだ。"
+                },
+                {
+                    "word": "一応",
+                    "reading": "いちおう",
+                    "meaning": "暂且、姑且",
+                    "example": "一応確認する。"
+                },
+                {
+                    "word": "一斉に",
+                    "reading": "いっせいに",
+                    "meaning": "一齐",
+                    "example": "一斉に立ち上がる。"
+                },
+                {
+                    "word": "いつの間にか",
+                    "reading": "いつのまにか",
+                    "meaning": "不知不觉",
+                    "example": "いつの間にか寝ていた。"
+                },
+                {
+                    "word": "今にも",
+                    "reading": "いまにも",
+                    "meaning": "马上就要",
+                    "example": "今にも雨が降りそうだ。"
+                },
+                {
+                    "word": "今さら",
+                    "reading": "いまさら",
+                    "meaning": "事到如今",
+                    "example": "今さら言っても遅い。"
+                },
+                {
+                    "word": "嫌々",
+                    "reading": "いやいや",
+                    "meaning": "勉强地",
+                    "example": "嫌々やる。"
+                }
+            ]
+        },
+        {
+            "category": "接続詞・その他 (连词及其他)",
+            "words": [
+                {
+                    "word": "あるいは",
+                    "reading": "あるいは",
+                    "meaning": "或者、也许",
+                    "example": "明日、あるいは明後日。"
+                },
+                {
+                    "word": "一方",
+                    "reading": "いっぽう",
+                    "meaning": "另一方面",
+                    "example": "一方では賛成だ。"
+                },
+                {
+                    "word": "いわゆる",
+                    "reading": "いわゆる",
+                    "meaning": "所谓的",
+                    "example": "いわゆる専門家。"
+                },
+                {
+                    "word": "要するに",
+                    "reading": "ようするに",
+                    "meaning": "总而言之",
+                    "example": "要するに無理だ。"
+                },
+                {
+                    "word": "ところが",
+                    "reading": "ところが",
+                    "meaning": "可是、然而",
+                    "example": "頑張った。ところが失敗した。"
+                }
+            ]
+        },
+        {
+            "category": "生活・日常 (生活日常)",
+            "words": [
+                {
+                    "word": "家賃",
+                    "reading": "やちん",
+                    "meaning": "房租",
+                    "example": "家賃を払う。"
+                },
+                {
+                    "word": "引っ越し",
+                    "reading": "ひっこし",
+                    "meaning": "搬家",
+                    "example": "来月引っ越しする。"
+                },
+                {
+                    "word": "近所",
+                    "reading": "きんじょ",
+                    "meaning": "附近、邻居",
+                    "example": "近所の人と話す。"
+                },
+                {
+                    "word": "家具",
+                    "reading": "かぐ",
+                    "meaning": "家具",
+                    "example": "新しい家具を買う。"
+                },
+                {
+                    "word": "電化製品",
+                    "reading": "でんかせいひん",
+                    "meaning": "电器产品",
+                    "example": "電化製品が壊れた。"
+                },
+                {
+                    "word": "洗濯機",
+                    "reading": "せんたくき",
+                    "meaning": "洗衣机",
+                    "example": "洗濯機を回す。"
+                },
+                {
+                    "word": "冷蔵庫",
+                    "reading": "れいぞうこ",
+                    "meaning": "冰箱",
+                    "example": "冷蔵庫に入れる。"
+                },
+                {
+                    "word": "掃除機",
+                    "reading": "そうじき",
+                    "meaning": "吸尘器",
+                    "example": "掃除機をかける。"
+                },
+                {
+                    "word": "ゴミ",
+                    "reading": "ゴミ",
+                    "meaning": "垃圾",
+                    "example": "ゴミを捨てる。"
+                },
+                {
+                    "word": "光熱費",
+                    "reading": "こうねつひ",
+                    "meaning": "水电费",
+                    "example": "光熱費が高い。"
+                }
+            ]
+        },
+        {
+            "category": "仕事・学習 (工作学习)",
+            "words": [
+                {
+                    "word": "会議",
+                    "reading": "かいぎ",
+                    "meaning": "会议",
+                    "example": "会議に出席する。"
+                },
+                {
+                    "word": "資料",
+                    "reading": "しりょう",
+                    "meaning": "资料",
+                    "example": "資料を準備する。"
+                },
+                {
+                    "word": "報告",
+                    "reading": "ほうこく",
+                    "meaning": "报告",
+                    "example": "上司に報告する。"
+                },
+                {
+                    "word": "締め切り",
+                    "reading": "しめきり",
+                    "meaning": "截止日期",
+                    "example": "締め切りに間に合う。"
+                },
+                {
+                    "word": "残業",
+                    "reading": "ざんぎょう",
+                    "meaning": "加班",
+                    "example": "今日は残業だ。"
+                },
+                {
+                    "word": "給料",
+                    "reading": "きゅうりょう",
+                    "meaning": "工资",
+                    "example": "給料が上がる。"
+                },
+                {
+                    "word": "昇進",
+                    "reading": "しょうしん",
+                    "meaning": "升职",
+                    "example": "課長に昇進する。"
+                },
+                {
+                    "word": "退職",
+                    "reading": "たいしょく",
+                    "meaning": "退职",
+                    "example": "来月退職する。"
+                },
+                {
+                    "word": "就職",
+                    "reading": "しゅうしょく",
+                    "meaning": "就职",
+                    "example": "大学卒業後就職する。"
+                },
+                {
+                    "word": "面接",
+                    "reading": "めんせつ",
+                    "meaning": "面试",
+                    "example": "明日面接がある。"
+                }
+            ]
+        },
+        {
+            "category": "感情・性格 (情感性格)",
+            "words": [
+                {
+                    "word": "喜び",
+                    "reading": "よろこび",
+                    "meaning": "喜悦",
+                    "example": "喜びを感じる。"
+                },
+                {
+                    "word": "悲しみ",
+                    "reading": "かなしみ",
+                    "meaning": "悲伤",
+                    "example": "悲しみに暮れる。"
+                },
+                {
+                    "word": "怒り",
+                    "reading": "いかり",
+                    "meaning": "愤怒",
+                    "example": "怒りを抑える。"
+                },
+                {
+                    "word": "不安",
+                    "reading": "ふあん",
+                    "meaning": "不安",
+                    "example": "将来が不安だ。"
+                },
+                {
+                    "word": "心配",
+                    "reading": "しんぱい",
+                    "meaning": "担心",
+                    "example": "健康が心配だ。"
+                },
+                {
+                    "word": "安心",
+                    "reading": "あんしん",
+                    "meaning": "安心",
+                    "example": "安心した。"
+                },
+                {
+                    "word": "感動",
+                    "reading": "かんどう",
+                    "meaning": "感动",
+                    "example": "映画に感動した。"
+                },
+                {
+                    "word": "驚き",
+                    "reading": "おどろき",
+                    "meaning": "惊讶",
+                    "example": "驚きを隠せない。"
+                },
+                {
+                    "word": "恥ずかしい",
+                    "reading": "はずかしい",
+                    "meaning": "害羞的",
+                    "example": "とても恥ずかしい。"
+                },
+                {
+                    "word": "寂しい",
+                    "reading": "さびしい",
+                    "meaning": "寂寞的",
+                    "example": "一人で寂しい。"
+                }
+            ]
+        }
+    ],
+    "studyTips": [
+        "每天复习20-30个单词",
+        "结合例句记忆效果更好",
+        "注意区分相似单词的用法",
+        "多做真题练习",
+        "听力和阅读中注意单词的实际运用"
+    ],
+    "examInfo": {
+        "vocabularyCount": "约3750个单词",
+        "passingScore": "95分（总分180分）",
+        "sections": [
+            "言語知識（文字・語彙）",
+            "言語知識（文法）・読解",
+            "聴解"
+        ]
+    }
+}

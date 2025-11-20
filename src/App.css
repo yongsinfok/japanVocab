@@ -1,8 +1,19 @@
-.app-container {
-  max-width: 1200px;
+.app-containe#root {
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
-  min-height: 100vh;
+  padding: 0;
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f8fafc;
+  color: #334155;
 }
 
 /* Header Styles */
@@ -10,10 +21,99 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 3rem;
-  padding: 1rem 0;
+  padding: 1rem 2rem;
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  z-index: 10;
 }
 
+.app-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 260px;
+  background-color: white;
+  border-right: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1rem;
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+
+.sidebar-title {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  color: #94a3b8;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  padding-left: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.collection-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.collection-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #64748b;
+  font-weight: 500;
+  text-align: left;
+  border: none;
+  background: none;
+  width: 100%;
+}
+
+.collection-item:hover {
+  background-color: #f1f5f9;
+  color: #334155;
+}
+
+.collection-item.active {
+  background-color: #eff6ff;
+  color: #3b82f6;
+}
+
+.collection-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.collection-count {
+  margin-left: auto;
+  font-size: 0.75rem;
+  background-color: #e2e8f0;
+  padding: 0.125rem 0.5rem;
+  border-radius: 999px;
+  color: #64748b;
+}
+
+.collection-item.active .collection-count {
+  background-color: #dbeafe;
+  color: #3b82f6;
+}
+
+/* Main Content Area */
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+  background-color: #f8fafc;
+}
 .logo {
   display: flex;
   align-items: center;
