@@ -1,0 +1,57 @@
+:root {
+  --bg-color: #F9F7F2;
+  --surface-color: #FFFFFF;
+  --primary-color: #5D7C65;
+  --primary-hover: #4A6350;
+  --secondary-color: #D48C96;
+  --secondary-hover: #C07580;
+  --text-color: #2C2C2C;
+  --text-light: #666666;
+  --border-color: #E0E0E0;
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --font-main: 'Noto Sans JP', sans-serif;
+  --font-display: 'Zen Maru Gothic', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: var(--font-main);
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+input, textarea {
+  font-family: var(--font-main);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #bbb;
+}

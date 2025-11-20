@@ -1,0 +1,702 @@
+[
+  {
+    "kanji": "犬",
+    "furigana": "いぬ",
+    "meaning": "Dog",
+    "example": "犬が走っています。",
+    "group": "Week1"
+  },
+  {
+    "kanji": "猫",
+    "furigana": "ねこ",
+    "meaning": "Cat",
+    "example": "猫が好きです。",
+    "group": "Week1"
+  },
+  {
+    "kanji": "子供",
+    "furigana": "こども",
+    "meaning": "Child",
+    "example": "子供が遊んでいます。",
+    "group": "Week1"
+  },
+  {
+    "kanji": "学校",
+    "furigana": "がっこう",
+    "meaning": "School",
+    "example": "学校に行きます。",
+    "group": "Week1"
+  },
+  {
+    "kanji": "先生",
+    "furigana": "せんせい",
+    "meaning": "Teacher",
+    "example": "先生は優しいです。",
+    "group": "Week1"
+  },
+  {
+    "kanji": "学生",
+    "furigana": "がくせい",
+    "meaning": "Student",
+    "example": "学生が勉強しています。",
+    "group": "Week1"
+  },
+  {
+    "kanji": "本",
+    "furigana": "ほん",
+    "meaning": "Book",
+    "example": "本を読みます。",
+    "group": "Week1"
+  },
+  {
+    "kanji": "机",
+    "furigana": "つくえ",
+    "meaning": "Desk",
+    "example": "机の上に本があります。",
+    "group": "Week1"
+  },
+  {
+    "kanji": "椅子",
+    "furigana": "いす",
+    "meaning": "Chair",
+    "example": "椅子に座ります。",
+    "group": "Week1"
+  },
+  {
+    "kanji": "部屋",
+    "furigana": "へや",
+    "meaning": "Room",
+    "example": "部屋は広いです。",
+    "group": "Week1"
+  },
+  {
+    "kanji": "家",
+    "furigana": "いえ",
+    "meaning": "House",
+    "example": "家に帰ります。",
+    "group": "Week2"
+  },
+  {
+    "kanji": "車",
+    "furigana": "くるま",
+    "meaning": "Car",
+    "example": "車で行きます。",
+    "group": "Week2"
+  },
+  {
+    "kanji": "電車",
+    "furigana": "でんしゃ",
+    "meaning": "Train",
+    "example": "電車に乗ります。",
+    "group": "Week2"
+  },
+  {
+    "kanji": "駅",
+    "furigana": "えき",
+    "meaning": "Station",
+    "example": "駅で待ちます。",
+    "group": "Week2"
+  },
+  {
+    "kanji": "道",
+    "furigana": "みち",
+    "meaning": "Road",
+    "example": "道を歩きます。",
+    "group": "Week2"
+  },
+  {
+    "kanji": "橋",
+    "furigana": "はし",
+    "meaning": "Bridge",
+    "example": "橋を渡ります。",
+    "group": "Week2"
+  },
+  {
+    "kanji": "川",
+    "furigana": "かわ",
+    "meaning": "River",
+    "example": "川で泳ぎます。",
+    "group": "Week2"
+  },
+  {
+    "kanji": "山",
+    "furigana": "やま",
+    "meaning": "Mountain",
+    "example": "山に登ります。",
+    "group": "Week2"
+  },
+  {
+    "kanji": "海",
+    "furigana": "うみ",
+    "meaning": "Sea",
+    "example": "海が綺麗です。",
+    "group": "Week2"
+  },
+  {
+    "kanji": "空",
+    "furigana": "そら",
+    "meaning": "Sky",
+    "example": "空が青いです。",
+    "group": "Week2"
+  },
+  {
+    "kanji": "雨",
+    "furigana": "あめ",
+    "meaning": "Rain",
+    "example": "雨が降っています。",
+    "group": "Week3"
+  },
+  {
+    "kanji": "雪",
+    "furigana": "ゆき",
+    "meaning": "Snow",
+    "example": "雪が積もりました。",
+    "group": "Week3"
+  },
+  {
+    "kanji": "風",
+    "furigana": "かぜ",
+    "meaning": "Wind",
+    "example": "風が強いです。",
+    "group": "Week3"
+  },
+  {
+    "kanji": "花",
+    "furigana": "はな",
+    "meaning": "Flower",
+    "example": "花が咲いています。",
+    "group": "Week3"
+  },
+  {
+    "kanji": "木",
+    "furigana": "き",
+    "meaning": "Tree",
+    "example": "木が高いです。",
+    "group": "Week3"
+  },
+  {
+    "kanji": "草",
+    "furigana": "くさ",
+    "meaning": "Grass",
+    "example": "草が生えています。",
+    "group": "Week3"
+  },
+  {
+    "kanji": "鳥",
+    "furigana": "とり",
+    "meaning": "Bird",
+    "example": "鳥が飛んでいます。",
+    "group": "Week3"
+  },
+  {
+    "kanji": "魚",
+    "furigana": "さかな",
+    "meaning": "Fish",
+    "example": "魚を食べます。",
+    "group": "Week3"
+  },
+  {
+    "kanji": "肉",
+    "furigana": "にく",
+    "meaning": "Meat",
+    "example": "肉が好きです。",
+    "group": "Week3"
+  },
+  {
+    "kanji": "野菜",
+    "furigana": "やさい",
+    "meaning": "Vegetable",
+    "example": "野菜を食べます。",
+    "group": "Week3"
+  },
+  {
+    "kanji": "果物",
+    "furigana": "くだもの",
+    "meaning": "Fruit",
+    "example": "果物が甘いです。",
+    "group": "Week4"
+  },
+  {
+    "kanji": "水",
+    "furigana": "みず",
+    "meaning": "Water",
+    "example": "水を飲みます。",
+    "group": "Week4"
+  },
+  {
+    "kanji": "お茶",
+    "furigana": "おちゃ",
+    "meaning": "Tea",
+    "example": "お茶が美味しいです。",
+    "group": "Week4"
+  },
+  {
+    "kanji": "牛乳",
+    "furigana": "ぎゅうにゅう",
+    "meaning": "Milk",
+    "example": "牛乳を飲みます。",
+    "group": "Week4"
+  },
+  {
+    "kanji": "朝",
+    "furigana": "あさ",
+    "meaning": "Morning",
+    "example": "朝ご飯を食べます。",
+    "group": "Week4"
+  },
+  {
+    "kanji": "昼",
+    "furigana": "ひる",
+    "meaning": "Noon",
+    "example": "昼に会いましょう。",
+    "group": "Week4"
+  },
+  {
+    "kanji": "夜",
+    "furigana": "よる",
+    "meaning": "Night",
+    "example": "夜は静かです。",
+    "group": "Week4"
+  },
+  {
+    "kanji": "今日",
+    "furigana": "きょう",
+    "meaning": "Today",
+    "example": "今日は暑いです。",
+    "group": "Week4"
+  },
+  {
+    "kanji": "明日",
+    "furigana": "あした",
+    "meaning": "Tomorrow",
+    "example": "明日会いましょう。",
+    "group": "Week4"
+  },
+  {
+    "kanji": "昨日",
+    "furigana": "きのう",
+    "meaning": "Yesterday",
+    "example": "昨日は雨でした。",
+    "group": "Week4"
+  },
+  {
+    "kanji": "春",
+    "furigana": "はる",
+    "meaning": "Spring",
+    "example": "春が来ました。",
+    "group": "Week5"
+  },
+  {
+    "kanji": "夏",
+    "furigana": "なつ",
+    "meaning": "Summer",
+    "example": "夏は暑いです。",
+    "group": "Week5"
+  },
+  {
+    "kanji": "秋",
+    "furigana": "あき",
+    "meaning": "Autumn",
+    "example": "秋は涼しいです。",
+    "group": "Week5"
+  },
+  {
+    "kanji": "冬",
+    "furigana": "ふゆ",
+    "meaning": "Winter",
+    "example": "冬は寒いです。",
+    "group": "Week5"
+  },
+  {
+    "kanji": "月",
+    "furigana": "つき",
+    "meaning": "Moon/Month",
+    "example": "月が綺麗です。",
+    "group": "Week5"
+  },
+  {
+    "kanji": "日",
+    "furigana": "ひ",
+    "meaning": "Day/Sun",
+    "example": "日が昇ります。",
+    "group": "Week5"
+  },
+  {
+    "kanji": "星",
+    "furigana": "ほし",
+    "meaning": "Star",
+    "example": "星が光っています。",
+    "group": "Week5"
+  },
+  {
+    "kanji": "手",
+    "furigana": "て",
+    "meaning": "Hand",
+    "example": "手を洗います。",
+    "group": "Week5"
+  },
+  {
+    "kanji": "足",
+    "furigana": "あし",
+    "meaning": "Foot/Leg",
+    "example": "足が痛いです。",
+    "group": "Week5"
+  },
+  {
+    "kanji": "頭",
+    "furigana": "あたま",
+    "meaning": "Head",
+    "example": "頭が痛いです。",
+    "group": "Week5"
+  },
+  {
+    "kanji": "目",
+    "furigana": "め",
+    "meaning": "Eye",
+    "example": "目が疲れました。",
+    "group": "Week6"
+  },
+  {
+    "kanji": "耳",
+    "furigana": "みみ",
+    "meaning": "Ear",
+    "example": "耳が痛いです。",
+    "group": "Week6"
+  },
+  {
+    "kanji": "口",
+    "furigana": "くち",
+    "meaning": "Mouth",
+    "example": "口を開けます。",
+    "group": "Week6"
+  },
+  {
+    "kanji": "鼻",
+    "furigana": "はな",
+    "meaning": "Nose",
+    "example": "鼻が高いです。",
+    "group": "Week6"
+  },
+  {
+    "kanji": "顔",
+    "furigana": "かお",
+    "meaning": "Face",
+    "example": "顔を洗います。",
+    "group": "Week6"
+  },
+  {
+    "kanji": "心",
+    "furigana": "こころ",
+    "meaning": "Heart/Mind",
+    "example": "心が温かいです。",
+    "group": "Week6"
+  },
+  {
+    "kanji": "体",
+    "furigana": "からだ",
+    "meaning": "Body",
+    "example": "体が元気です。",
+    "group": "Week6"
+  },
+  {
+    "kanji": "服",
+    "furigana": "ふく",
+    "meaning": "Clothes",
+    "example": "服を着ます。",
+    "group": "Week6"
+  },
+  {
+    "kanji": "靴",
+    "furigana": "くつ",
+    "meaning": "Shoes",
+    "example": "靴を履きます。",
+    "group": "Week6"
+  },
+  {
+    "kanji": "帽子",
+    "furigana": "ぼうし",
+    "meaning": "Hat",
+    "example": "帽子を被ります。",
+    "group": "Week6"
+  },
+  {
+    "kanji": "時計",
+    "furigana": "とけい",
+    "meaning": "Clock/Watch",
+    "example": "時計を見ます。",
+    "group": "Week7"
+  },
+  {
+    "kanji": "鞄",
+    "furigana": "かばん",
+    "meaning": "Bag",
+    "example": "鞄を持ちます。",
+    "group": "Week7"
+  },
+  {
+    "kanji": "財布",
+    "furigana": "さいふ",
+    "meaning": "Wallet",
+    "example": "財布を忘れました。",
+    "group": "Week7"
+  },
+  {
+    "kanji": "鍵",
+    "furigana": "かぎ",
+    "meaning": "Key",
+    "example": "鍵を開けます。",
+    "group": "Week7"
+  },
+  {
+    "kanji": "窓",
+    "furigana": "まど",
+    "meaning": "Window",
+    "example": "窓を開けます。",
+    "group": "Week7"
+  },
+  {
+    "kanji": "扉",
+    "furigana": "とびら",
+    "meaning": "Door",
+    "example": "扉を閉めます。",
+    "group": "Week7"
+  },
+  {
+    "kanji": "壁",
+    "furigana": "かべ",
+    "meaning": "Wall",
+    "example": "壁が白いです。",
+    "group": "Week7"
+  },
+  {
+    "kanji": "床",
+    "furigana": "ゆか",
+    "meaning": "Floor",
+    "example": "床を掃除します。",
+    "group": "Week7"
+  },
+  {
+    "kanji": "天井",
+    "furigana": "てんじょう",
+    "meaning": "Ceiling",
+    "example": "天井が高いです。",
+    "group": "Week7"
+  },
+  {
+    "kanji": "階段",
+    "furigana": "かいだん",
+    "meaning": "Stairs",
+    "example": "階段を上ります。",
+    "group": "Week7"
+  },
+  {
+    "kanji": "店",
+    "furigana": "みせ",
+    "meaning": "Shop",
+    "example": "店で買います。",
+    "group": "Week8"
+  },
+  {
+    "kanji": "銀行",
+    "furigana": "ぎんこう",
+    "meaning": "Bank",
+    "example": "銀行に行きます。",
+    "group": "Week8"
+  },
+  {
+    "kanji": "病院",
+    "furigana": "びょういん",
+    "meaning": "Hospital",
+    "example": "病院で診てもらいます。",
+    "group": "Week8"
+  },
+  {
+    "kanji": "図書館",
+    "furigana": "としょかん",
+    "meaning": "Library",
+    "example": "図書館で勉強します。",
+    "group": "Week8"
+  },
+  {
+    "kanji": "公園",
+    "furigana": "こうえん",
+    "meaning": "Park",
+    "example": "公園で遊びます。",
+    "group": "Week8"
+  },
+  {
+    "kanji": "映画館",
+    "furigana": "えいがかん",
+    "meaning": "Cinema",
+    "example": "映画館で映画を見ます。",
+    "group": "Week8"
+  },
+  {
+    "kanji": "レストラン",
+    "furigana": "れすとらん",
+    "meaning": "Restaurant",
+    "example": "レストランで食事します。",
+    "group": "Week8"
+  },
+  {
+    "kanji": "会社",
+    "furigana": "かいしゃ",
+    "meaning": "Company",
+    "example": "会社で働きます。",
+    "group": "Week8"
+  },
+  {
+    "kanji": "仕事",
+    "furigana": "しごと",
+    "meaning": "Work/Job",
+    "example": "仕事が忙しいです。",
+    "group": "Week8"
+  },
+  {
+    "kanji": "友達",
+    "furigana": "ともだち",
+    "meaning": "Friend",
+    "example": "友達と遊びます。",
+    "group": "Week8"
+  },
+  {
+    "kanji": "家族",
+    "furigana": "かぞく",
+    "meaning": "Family",
+    "example": "家族が大切です。",
+    "group": "Week9"
+  },
+  {
+    "kanji": "父",
+    "furigana": "ちち",
+    "meaning": "Father",
+    "example": "父は会社員です。",
+    "group": "Week9"
+  },
+  {
+    "kanji": "母",
+    "furigana": "はは",
+    "meaning": "Mother",
+    "example": "母は優しいです。",
+    "group": "Week9"
+  },
+  {
+    "kanji": "兄",
+    "furigana": "あに",
+    "meaning": "Older Brother",
+    "example": "兄は大学生です。",
+    "group": "Week9"
+  },
+  {
+    "kanji": "姉",
+    "furigana": "あね",
+    "meaning": "Older Sister",
+    "example": "姉は看護師です。",
+    "group": "Week9"
+  },
+  {
+    "kanji": "弟",
+    "furigana": "おとうと",
+    "meaning": "Younger Brother",
+    "example": "弟は高校生です。",
+    "group": "Week9"
+  },
+  {
+    "kanji": "妹",
+    "furigana": "いもうと",
+    "meaning": "Younger Sister",
+    "example": "妹は中学生です。",
+    "group": "Week9"
+  },
+  {
+    "kanji": "祖父",
+    "furigana": "そふ",
+    "meaning": "Grandfather",
+    "example": "祖父は元気です。",
+    "group": "Week9"
+  },
+  {
+    "kanji": "祖母",
+    "furigana": "そぼ",
+    "meaning": "Grandmother",
+    "example": "祖母は料理が上手です。",
+    "group": "Week9"
+  },
+  {
+    "kanji": "赤ちゃん",
+    "furigana": "あかちゃん",
+    "meaning": "Baby",
+    "example": "赤ちゃんが泣いています。",
+    "group": "Week9"
+  },
+  {
+    "kanji": "音楽",
+    "furigana": "おんがく",
+    "meaning": "Music",
+    "example": "音楽を聴きます。",
+    "group": "Week10"
+  },
+  {
+    "kanji": "歌",
+    "furigana": "うた",
+    "meaning": "Song",
+    "example": "歌を歌います。",
+    "group": "Week10"
+  },
+  {
+    "kanji": "絵",
+    "furigana": "え",
+    "meaning": "Picture/Painting",
+    "example": "絵を描きます。",
+    "group": "Week10"
+  },
+  {
+    "kanji": "写真",
+    "furigana": "しゃしん",
+    "meaning": "Photo",
+    "example": "写真を撮ります。",
+    "group": "Week10"
+  },
+  {
+    "kanji": "映画",
+    "furigana": "えいが",
+    "meaning": "Movie",
+    "example": "映画を見ます。",
+    "group": "Week10"
+  },
+  {
+    "kanji": "テレビ",
+    "furigana": "てれび",
+    "meaning": "Television",
+    "example": "テレビを見ます。",
+    "group": "Week10"
+  },
+  {
+    "kanji": "新聞",
+    "furigana": "しんぶん",
+    "meaning": "Newspaper",
+    "example": "新聞を読みます。",
+    "group": "Week10"
+  },
+  {
+    "kanji": "雑誌",
+    "furigana": "ざっし",
+    "meaning": "Magazine",
+    "example": "雑誌を買います。",
+    "group": "Week10"
+  },
+  {
+    "kanji": "手紙",
+    "furigana": "てがみ",
+    "meaning": "Letter",
+    "example": "手紙を書きます。",
+    "group": "Week10"
+  },
+  {
+    "kanji": "言葉",
+    "furigana": "ことば",
+    "meaning": "Word/Language",
+    "example": "日本語の言葉を勉強します。",
+    "group": "Week10"
+  }
+]
