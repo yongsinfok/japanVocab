@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Plus, Trash2, BookOpen, Sparkles, Search, X, Upload, Library, Book, Layers } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Plus, Trash2, BookOpen, Sparkles, Search, X, Upload, Library, Book, Layers, ChevronRight, Settings, MoreHorizontal, Filter } from 'lucide-react';
 import { read, utils } from 'xlsx';
 import './App.css';
 
 function App() {
-  const fileInputRef = React.useRef(null);
+  const fileInputRef = useRef(null);
   const [words, setWords] = useState(() => {
     const saved = localStorage.getItem('japanese-words');
     return saved ? JSON.parse(saved) : [];
@@ -22,11 +22,13 @@ function App() {
     }
   }, []);
 
+  const [activeTab, setActiveTab] = useState('words'); // 'words', 'collections', 'menu'
   const [isStudyMode, setIsStudyMode] = useState(false);
   const [showAddForm, setShowAddForm] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCollection, setSelectedCollection] = useState('All');
   const [selectedGroup, setSelectedGroup] = useState('All');
+  const [showSearch, setShowSearch] = useState(false);
 
   // Get unique collections
   const collections = ['All', ...new Set(words.map(w => w.collection || 'My Vocabulary'))].sort();
@@ -205,6 +207,7 @@ function App() {
         if (newWords.length > 0) {
           setWords(prev => [...newWords, ...prev]);
           setSelectedCollection(collectionName); // Switch to new collection
+          setActiveTab('words');
           alert(`✅ ${newWords.length} words imported to "${collectionName}"!`);
         } else {
           alert('⚠️ No valid words found in the file. Please check the format.');
@@ -229,6 +232,7 @@ function App() {
 
         setWords(prev => [...newWords, ...prev]);
         setSelectedCollection(collectionName);
+        setActiveTab('words');
         alert(`${newWords.length} words imported successfully!`);
       }
     } catch (error) {
@@ -240,113 +244,209 @@ function App() {
     e.target.value = '';
   };
 
+  const handleCollectionSelect = (c) => {
+    setSelectedCollection(c);
+    setActiveTab('words');
+  };
+
   return (
-    <div className="app-container">
-      <header className="header">
-        <div className="logo">
-          <div className="logo-icon"><Sparkles size={20} /></div>
-          <h1>日本語の単語帳</h1>
-        </div>
-        <div className="header-actions">
-          <div className="search-bar">
-            <Search size={18} className="search-icon" />
-            <input
-              type="text"
-              placeholder="検索 (Search)..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          </div>
-
-          <select
-            className="group-select"
-            value={selectedGroup}
-            onChange={(e) => setSelectedGroup(e.target.value)}
-          >
-            {groups.map(g => (
-              <option key={g} value={g}>{g === 'All' ? 'All Groups' : g}</option>
-            ))}
-          </select>
-
-          <input
-            type="file"
-            ref={fileInputRef}
-            onChange={handleFileUpload}
-            accept=".json,.xlsx,.xls"
-            style={{ display: 'none' }}
-          />
-          <button className="mode-btn" onClick={handleImportClick}>
-            <Upload size={18} />
-            Import
-          </button>
-          <button
-            className={`mode-btn ${isStudyMode ? 'active' : ''}`}
-            onClick={() => setIsStudyMode(!isStudyMode)}
-          >
-            <BookOpen size={18} />
-            {isStudyMode ? '学習中' : '学習モード'}
-          </button>
-          <button className="add-btn" onClick={() => setShowAddForm(true)}>
-            <Plus size={20} /> 新しい単語
-          </button>
-        </div>
-      </header>
-
-      <div className="app-body">
-        <aside className="sidebar">
-          <div className="sidebar-title">Collections (词库)</div>
-          <div className="collection-list">
-            {collections.map(c => {
-              const count = c === 'All'
-                ? words.length
-                : words.filter(w => (w.collection || 'My Vocabulary') === c).length;
-
-              return (
-                <button
-                  key={c}
-                  className={`collection-item ${selectedCollection === c ? 'active' : ''}`}
-                  onClick={() => setSelectedCollection(c)}
-                >
-                  <div className="collection-icon">
-                    {c === 'All' ? <Layers size={18} /> : <Book size={18} />}
-                  </div>
-                  <span>{c}</span>
-                  <span className="collection-count">{count}</span>
+    <div className="ios-app">
+      {/* Top Navigation Bar */}
+      <header className="ios-navbar">
+        <div className="ios-navbar-content">
+          {activeTab === 'words' && (
+            <>
+              <div className="ios-navbar-left">
+                {selectedCollection !== 'All' && (
+                  <button className="ios-back-btn" onClick={() => setSelectedCollection('All')}>
+                    <Layers size={20} />
+                  </button>
+                )}
+              </div>
+              <div className="ios-navbar-title">
+                <h1>{selectedCollection === 'All' ? 'All Words' : selectedCollection}</h1>
+              </div>
+              <div className="ios-navbar-right">
+                <button className="ios-icon-btn" onClick={() => setShowSearch(!showSearch)}>
+                  <Search size={22} />
                 </button>
-              );
-            })}
-          </div>
-        </aside>
-
-        <main className="main-content">
-          {words.length === 0 && !showAddForm ? (
-            <div className="empty-state">
-              <div className="empty-icon">🌸</div>
-              <h2>単語を追加しましょう</h2>
-              <p>Start your journey by adding your first Japanese word.</p>
-              <button className="add-btn-large" onClick={() => setShowAddForm(true)}>
-                Add First Word
-              </button>
-            </div>
-          ) : (
-            <div className="word-grid">
-              {filteredWords.map(word => (
-                <WordCard
-                  key={word.id}
-                  word={word}
-                  isStudyMode={isStudyMode}
-                  onDelete={deleteWord}
-                />
-              ))}
-              {filteredWords.length === 0 && (
-                <div className="no-results">
-                  <p>No words found in this collection/group.</p>
-                </div>
-              )}
+                <button className="ios-icon-btn" onClick={() => setShowAddForm(true)}>
+                  <Plus size={24} />
+                </button>
+              </div>
+            </>
+          )}
+          {activeTab === 'collections' && (
+            <div className="ios-navbar-title">
+              <h1>Collections</h1>
             </div>
           )}
-        </main>
-      </div>
+          {activeTab === 'menu' && (
+            <div className="ios-navbar-title">
+              <h1>Menu</h1>
+            </div>
+          )}
+        </div>
+
+        {/* Search Bar (Expandable) */}
+        {activeTab === 'words' && showSearch && (
+          <div className="ios-search-container">
+            <div className="ios-search-bar">
+              <Search size={16} className="search-icon" />
+              <input
+                type="text"
+                placeholder="Search words..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                autoFocus
+              />
+              <button className="clear-search" onClick={() => { setSearchTerm(''); setShowSearch(false); }}>
+                Cancel
+              </button>
+            </div>
+            {groups.length > 1 && (
+              <div className="ios-filter-scroll">
+                {groups.map(g => (
+                  <button 
+                    key={g} 
+                    className={`filter-chip ${selectedGroup === g ? 'active' : ''}`}
+                    onClick={() => setSelectedGroup(g)}
+                  >
+                    {g === 'All' ? 'All' : g}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+      </header>
+
+      {/* Main Content */}
+      <main className="ios-content">
+        {activeTab === 'words' && (
+          <div className="words-view">
+            {words.length === 0 ? (
+              <div className="empty-state">
+                <div className="empty-icon">🌸</div>
+                <h2>No words yet</h2>
+                <p>Tap + to add your first word</p>
+              </div>
+            ) : (
+              <div className="word-list">
+                {filteredWords.map(word => (
+                  <WordCard
+                    key={word.id}
+                    word={word}
+                    isStudyMode={isStudyMode}
+                    onDelete={deleteWord}
+                  />
+                ))}
+                {filteredWords.length === 0 && (
+                  <div className="no-results">
+                    <p>No matches found</p>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        )}
+
+        {activeTab === 'collections' && (
+          <div className="collections-view">
+            <div className="ios-list">
+              {collections.map(c => {
+                const count = c === 'All'
+                  ? words.length
+                  : words.filter(w => (w.collection || 'My Vocabulary') === c).length;
+                
+                return (
+                  <button
+                    key={c}
+                    className={`ios-list-item ${selectedCollection === c ? 'active' : ''}`}
+                    onClick={() => handleCollectionSelect(c)}
+                  >
+                    <div className="ios-list-icon">
+                      {c === 'All' ? <Layers size={20} /> : <Book size={20} />}
+                    </div>
+                    <div className="ios-list-content">
+                      <span className="ios-list-title">{c}</span>
+                      <span className="ios-list-subtitle">{count} words</span>
+                    </div>
+                    <ChevronRight size={16} className="ios-chevron" />
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {activeTab === 'menu' && (
+          <div className="menu-view">
+            <div className="ios-section-title">Study</div>
+            <div className="ios-list">
+              <div className="ios-list-item toggle-item" onClick={() => setIsStudyMode(!isStudyMode)}>
+                <div className="ios-list-icon"><BookOpen size={20} /></div>
+                <div className="ios-list-content">
+                  <span className="ios-list-title">Study Mode</span>
+                  <span className="ios-list-subtitle">Hide meanings</span>
+                </div>
+                <div className={`ios-toggle ${isStudyMode ? 'on' : ''}`}>
+                  <div className="ios-toggle-knob"></div>
+                </div>
+              </div>
+            </div>
+
+            <div className="ios-section-title">Data</div>
+            <div className="ios-list">
+              <button className="ios-list-item" onClick={handleImportClick}>
+                <div className="ios-list-icon"><Upload size={20} /></div>
+                <div className="ios-list-content">
+                  <span className="ios-list-title">Import File</span>
+                  <span className="ios-list-subtitle">JSON or Excel</span>
+                </div>
+                <ChevronRight size={16} className="ios-chevron" />
+              </button>
+              <input
+                type="file"
+                ref={fileInputRef}
+                onChange={handleFileUpload}
+                accept=".json,.xlsx,.xls"
+                style={{ display: 'none' }}
+              />
+            </div>
+            
+            <div className="app-info">
+              <Sparkles size={24} className="app-logo-icon" />
+              <p>Japanese Vocab v1.0</p>
+            </div>
+          </div>
+        )}
+      </main>
+
+      {/* Bottom Tab Bar */}
+      <nav className="ios-tabbar">
+        <button 
+          className={`tab-item ${activeTab === 'words' ? 'active' : ''}`}
+          onClick={() => setActiveTab('words')}
+        >
+          <Library size={24} />
+          <span>Words</span>
+        </button>
+        <button 
+          className={`tab-item ${activeTab === 'collections' ? 'active' : ''}`}
+          onClick={() => setActiveTab('collections')}
+        >
+          <Layers size={24} />
+          <span>Collections</span>
+        </button>
+        <button 
+          className={`tab-item ${activeTab === 'menu' ? 'active' : ''}`}
+          onClick={() => setActiveTab('menu')}
+        >
+          <MoreHorizontal size={24} />
+          <span>Menu</span>
+        </button>
+      </nav>
 
       {showAddForm && (
         <AddWordModal
@@ -362,7 +462,6 @@ function App() {
 function WordCard({ word, isStudyMode, onDelete }) {
   const [isRevealed, setIsRevealed] = useState(false);
 
-  // Reset reveal state when study mode changes or word changes
   useEffect(() => {
     setIsRevealed(!isStudyMode);
   }, [isStudyMode, word]);
@@ -378,32 +477,20 @@ function WordCard({ word, isStudyMode, onDelete }) {
       className={`word-card ${isStudyMode ? 'study-mode' : ''} ${isRevealed ? 'revealed' : ''}`}
       onClick={handleCardClick}
     >
-      <div className="card-content">
-        <div className="kanji-section">
+      <div className="card-main">
+        <div className="kanji-row">
           <h3 className="kanji">{word.kanji}</h3>
+          {word.group && <span className="group-badge">{word.group}</span>}
         </div>
-
-        <div className={`info-section ${isRevealed ? 'visible' : 'hidden'}`}>
+        
+        <div className={`details-container ${isRevealed ? 'visible' : 'hidden'}`}>
           <p className="furigana">{word.furigana}</p>
-          <div className="divider"></div>
           <p className="meaning">{word.meaning}</p>
-          {word.example && (
-            <div className="example-box">
-              <p className="example">{word.example}</p>
-            </div>
-          )}
-          <div className="tags">
-            {word.group && <span className="group-tag">{word.group}</span>}
-            {word.collection && word.collection !== 'My Vocabulary' && (
-              <span className="collection-tag">{word.collection}</span>
-            )}
-          </div>
+          {word.example && <p className="example">{word.example}</p>}
         </div>
-
+        
         {!isRevealed && isStudyMode && (
-          <div className="reveal-hint">
-            <span>Click to reveal</span>
-          </div>
+          <div className="tap-hint">Tap to reveal</div>
         )}
       </div>
 
@@ -443,82 +530,70 @@ function AddWordModal({ onClose, onAdd, currentCollection }) {
 
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={e => e.stopPropagation()}>
+      <div className="modal-sheet" onClick={e => e.stopPropagation()}>
         <div className="modal-header">
-          <h2>新しい単語 (New Word)</h2>
-          <button className="close-btn" onClick={onClose}><X size={24} /></button>
+          <button className="cancel-btn" onClick={onClose}>Cancel</button>
+          <h2>New Word</h2>
+          <button className="save-btn" onClick={handleSubmit}>Save</button>
         </div>
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label>漢字 (Kanji)</label>
+        <div className="modal-body">
+          <div className="ios-form-group">
             <input
               type="text"
-              placeholder="e.g. 猫"
+              placeholder="Kanji (e.g. 猫)"
               value={formData.kanji}
               onChange={e => setFormData({ ...formData, kanji: e.target.value })}
               autoFocus
-              required
             />
-          </div>
-          <div className="form-group">
-            <label>ふりがな (Reading)</label>
+            <div className="divider"></div>
             <input
               type="text"
-              placeholder="e.g. ねこ"
+              placeholder="Reading (e.g. ねこ)"
               value={formData.furigana}
               onChange={e => setFormData({ ...formData, furigana: e.target.value })}
             />
-          </div>
-          <div className="form-group">
-            <label>意味 (Meaning)</label>
+            <div className="divider"></div>
             <input
               type="text"
-              placeholder="e.g. Cat"
+              placeholder="Meaning (e.g. Cat)"
               value={formData.meaning}
               onChange={e => setFormData({ ...formData, meaning: e.target.value })}
-              required
             />
           </div>
-          <div className="form-group">
-            <label>例文 (Example Sentence)</label>
+
+          <div className="ios-form-group">
             <textarea
-              placeholder="e.g. 猫が好きです。"
+              placeholder="Example Sentence"
               value={formData.example}
               onChange={e => setFormData({ ...formData, example: e.target.value })}
               rows={3}
             />
           </div>
-          <div className="form-row">
-            <div className="form-group">
-              <label>グループ (Group)</label>
-              <input
-                type="text"
-                placeholder="e.g. Week 1"
-                value={formData.group}
-                onChange={e => setFormData({ ...formData, group: e.target.value })}
-                list="group-suggestions"
-              />
-              <datalist id="group-suggestions">
-                <option value="Week 1" />
-                <option value="Week 2" />
-                <option value="Verbs" />
-                <option value="Nouns" />
-              </datalist>
-            </div>
-            <div className="form-group">
-              <label>词库 (Collection)</label>
-              <input
-                type="text"
-                value={formData.collection}
-                onChange={e => setFormData({ ...formData, collection: e.target.value })}
-              />
-            </div>
+
+          <div className="ios-form-group">
+            <input
+              type="text"
+              placeholder="Group (e.g. Week 1)"
+              value={formData.group}
+              onChange={e => setFormData({ ...formData, group: e.target.value })}
+              list="group-suggestions"
+            />
+            <div className="divider"></div>
+            <input
+              type="text"
+              placeholder="Collection"
+              value={formData.collection}
+              onChange={e => setFormData({ ...formData, collection: e.target.value })}
+            />
           </div>
-          <div className="modal-actions">
-            <button type="button" className="cancel-btn" onClick={onClose}>キャンセル</button>
-            <button type="submit" className="submit-btn">追加する</button>
-          </div>
-        </form>
+          
+          <datalist id="group-suggestions">
+            <option value="Week 1" />
+            <option value="Week 2" />
+            <option value="Verbs" />
+            <option value="Nouns" />
+          </datalist>
+        </div>
       </div>
     </div>
   );
