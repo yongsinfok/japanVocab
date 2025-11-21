@@ -1,7 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Plus, Trash2, BookOpen, Sparkles, Search, X, Upload, Library, Book, Layers, ChevronRight, Settings, MoreHorizontal, Filter } from 'lucide-react';
+import { Plus, Trash2, BookOpen, Sparkles, Search, X, Upload, Library, Book, Layers, ChevronRight, Settings, MoreHorizontal, Filter, Palette } from 'lucide-react';
 import { read, utils } from 'xlsx';
 import './App.css';
+
+const THEMES = [
+  { id: 'default', name: 'Default', color: '#007AFF' },
+  { id: 'sakura', name: 'Sakura', color: '#FF85A1' },
+  { id: 'matcha', name: 'Matcha', color: '#7C9070' },
+  { id: 'fuji', name: 'Fuji', color: '#9D8EC3' },
+  { id: 'mikan', name: 'Mikan', color: '#FFB085' },
+  { id: 'kuro', name: 'Kuro', color: '#4A4A4A' },
+];
 
 function App() {
   const fileInputRef = useRef(null);
@@ -29,6 +38,15 @@ function App() {
   const [selectedCollection, setSelectedCollection] = useState('All');
   const [selectedGroup, setSelectedGroup] = useState('All');
   const [showSearch, setShowSearch] = useState(false);
+  const [currentTheme, setCurrentTheme] = useState(() => {
+    return localStorage.getItem('app-theme') || 'default';
+  });
+
+  // Apply theme
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    localStorage.setItem('app-theme', currentTheme);
+  }, [currentTheme]);
 
   // Get unique collections
   const collections = ['All', ...new Set(words.map(w => w.collection || 'My Vocabulary'))].sort();
@@ -307,8 +325,8 @@ function App() {
             {groups.length > 1 && (
               <div className="ios-filter-scroll">
                 {groups.map(g => (
-                  <button 
-                    key={g} 
+                  <button
+                    key={g}
                     className={`filter-chip ${selectedGroup === g ? 'active' : ''}`}
                     onClick={() => setSelectedGroup(g)}
                   >
@@ -358,7 +376,7 @@ function App() {
                 const count = c === 'All'
                   ? words.length
                   : words.filter(w => (w.collection || 'My Vocabulary') === c).length;
-                
+
                 return (
                   <button
                     key={c}
@@ -382,6 +400,19 @@ function App() {
 
         {activeTab === 'menu' && (
           <div className="menu-view">
+            <div className="ios-section-title">Appearance</div>
+            <div className="theme-grid">
+              {THEMES.map(theme => (
+                <button
+                  key={theme.id}
+                  className={`theme-option ${currentTheme === theme.id ? 'active' : ''}`}
+                  style={{ '--color': theme.color }}
+                  onClick={() => setCurrentTheme(theme.id)}
+                  title={theme.name}
+                />
+              ))}
+            </div>
+
             <div className="ios-section-title">Study</div>
             <div className="ios-list">
               <div className="ios-list-item toggle-item" onClick={() => setIsStudyMode(!isStudyMode)}>
@@ -414,10 +445,10 @@ function App() {
                 style={{ display: 'none' }}
               />
             </div>
-            
+
             <div className="app-info">
               <Sparkles size={24} className="app-logo-icon" />
-              <p>Japanese Vocab v1.0</p>
+              <p>Japanese Vocab v1.1</p>
             </div>
           </div>
         )}
@@ -425,21 +456,21 @@ function App() {
 
       {/* Bottom Tab Bar */}
       <nav className="ios-tabbar">
-        <button 
+        <button
           className={`tab-item ${activeTab === 'words' ? 'active' : ''}`}
           onClick={() => setActiveTab('words')}
         >
           <Library size={24} />
           <span>Words</span>
         </button>
-        <button 
+        <button
           className={`tab-item ${activeTab === 'collections' ? 'active' : ''}`}
           onClick={() => setActiveTab('collections')}
         >
           <Layers size={24} />
           <span>Collections</span>
         </button>
-        <button 
+        <button
           className={`tab-item ${activeTab === 'menu' ? 'active' : ''}`}
           onClick={() => setActiveTab('menu')}
         >
@@ -482,13 +513,13 @@ function WordCard({ word, isStudyMode, onDelete }) {
           <h3 className="kanji">{word.kanji}</h3>
           {word.group && <span className="group-badge">{word.group}</span>}
         </div>
-        
+
         <div className={`details-container ${isRevealed ? 'visible' : 'hidden'}`}>
           <p className="furigana">{word.furigana}</p>
           <p className="meaning">{word.meaning}</p>
           {word.example && <p className="example">{word.example}</p>}
         </div>
-        
+
         {!isRevealed && isStudyMode && (
           <div className="tap-hint">Tap to reveal</div>
         )}
@@ -586,7 +617,7 @@ function AddWordModal({ onClose, onAdd, currentCollection }) {
               onChange={e => setFormData({ ...formData, collection: e.target.value })}
             />
           </div>
-          
+
           <datalist id="group-suggestions">
             <option value="Week 1" />
             <option value="Week 2" />

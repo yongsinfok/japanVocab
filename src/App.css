@@ -3,7 +3,8 @@
   --ios-surface: #FFFFFF;
   --ios-text: #000000;
   --ios-text-secondary: #8E8E93;
-  --ios-blue: #007AFF;
+  --theme-color: #007AFF;
+  /* Default Blue */
   --ios-red: #FF3B30;
   --ios-green: #34C759;
   --ios-separator: #C6C6C8;
@@ -14,6 +15,32 @@
   --navbar-height: 44px;
   --tabbar-height: 83px;
   /* 49px + 34px home indicator */
+}
+
+/* Japanese Color Themes */
+[data-theme='sakura'] {
+  --theme-color: #FF85A1;
+  /* Soft Pink */
+}
+
+[data-theme='matcha'] {
+  --theme-color: #7C9070;
+  /* Muted Green */
+}
+
+[data-theme='fuji'] {
+  --theme-color: #9D8EC3;
+  /* Soft Purple */
+}
+
+[data-theme='mikan'] {
+  --theme-color: #FFB085;
+  /* Soft Orange */
+}
+
+[data-theme='kuro'] {
+  --theme-color: #4A4A4A;
+  /* Charcoal */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -102,7 +129,7 @@ body {
 .ios-back-btn {
   background: none;
   border: none;
-  color: var(--ios-blue);
+  color: var(--theme-color);
   padding: 8px;
   margin: -8px;
   cursor: pointer;
@@ -151,7 +178,7 @@ body {
 .clear-search {
   background: none;
   border: none;
-  color: var(--ios-blue);
+  color: var(--theme-color);
   font-size: 17px;
   padding: 0;
   margin-left: 8px;
@@ -184,9 +211,9 @@ body {
 }
 
 .filter-chip.active {
-  background: var(--ios-blue);
+  background: var(--theme-color);
   color: white;
-  border-color: var(--ios-blue);
+  border-color: var(--theme-color);
 }
 
 /* Main Content */
@@ -272,7 +299,7 @@ body {
 .meaning {
   font-size: 17px;
   font-weight: 600;
-  color: var(--ios-blue);
+  color: var(--theme-color);
   margin: 4px 0;
 }
 
@@ -334,7 +361,7 @@ body {
 }
 
 .ios-list-icon {
-  color: var(--ios-blue);
+  color: var(--theme-color);
   margin-right: 12px;
   display: flex;
   align-items: center;
@@ -368,6 +395,39 @@ body {
   text-transform: uppercase;
   color: var(--ios-text-secondary);
   font-weight: 500;
+}
+
+/* Theme Selector */
+.theme-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  padding: 16px;
+  background: var(--ios-surface);
+  border-radius: 10px;
+  margin: 0 16px;
+}
+
+.theme-option {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  border: 2px solid transparent;
+  transition: transform 0.2s;
+}
+
+.theme-option.active {
+  transform: scale(1.1);
+  border-color: var(--ios-text);
+}
+
+.theme-option::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border-radius: 50%;
+  background-color: var(--color);
 }
 
 /* Toggle Switch */
@@ -440,7 +500,7 @@ body {
 }
 
 .tab-item.active {
-  color: var(--ios-blue);
+  color: var(--theme-color);
 }
 
 /* Modal Sheet */
@@ -497,11 +557,11 @@ body {
 }
 
 .cancel-btn {
-  color: var(--ios-blue);
+  color: var(--theme-color);
 }
 
 .save-btn {
-  color: var(--ios-blue);
+  color: var(--theme-color);
   font-weight: 600;
 }
 
